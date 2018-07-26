@@ -27,10 +27,31 @@ end
 #  "When I check the following ratings: G"
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
+  #puts
+  #print "*** When I check ratings: uncheck="
+  #print uncheck
+  #print ", rating_list="
+  #print rating_list
+  #puts
+
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
-  fail "Unimplemented"
+  
+  rating_list.split(%r{,\s*}).each do |rating|
+    #puts rating
+    checkbox = 'ratings_' + rating
+    if (uncheck.nil?)
+      check(checkbox)
+    else
+      uncheck(checkbox)
+    end
+  end
+  #field_checked = find_field('ratings_PG')['checked']
+  #puts
+  #print "*** PG checked="
+  #print field_checked
+  #puts
 end
 
 Then /I should see all the movies/ do
