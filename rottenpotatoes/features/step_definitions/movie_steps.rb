@@ -56,5 +56,12 @@ end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  fail "Unimplemented"
+  # count rows <tr> in the HTML <table>
+  rows = 1
+  
+  # count Movies in the DB
+  movie_count = 0
+  
+  # check that they match
+  expect(rows).to eq movie_count
 end
