@@ -57,10 +57,10 @@ end
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   # count rows <tr> in the HTML <table>
-  rows = 1
-  
+  rows = all('tbody tr').length()
+
   # count Movies in the DB
-  movie_count = 0
+  movie_count = Movie.all.count
   
   # check that they match
   expect(rows).to eq movie_count
